@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.title {
+  position: absolute;
+  margin-top: 15px;
+}

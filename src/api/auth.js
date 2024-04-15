@@ -5,9 +5,15 @@ const api = () => {
   return api;
 };
 
-export async function login() {
-  return await api().post("/login", {
-    email: "clement.gambier@gmail.com",
-    password: "clement",
+export async function login(email, password) {
+  const response = await api().post("/login", {
+    email: email,
+    password: password,
   });
+  console.log(response.token);
+  if (response.token) {
+    console.log("setting token");
+    localStorage.setItem("token", response.token);
+  }
+  return response;
 }

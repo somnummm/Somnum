@@ -1,30 +1,39 @@
 import React from "react";
-import {Link, Outlet} from "react-router-dom";
-import {Button} from "./ui/Button";
-import {Home as HomeIcon} from "lucide-react";
+import { Link, Outlet } from "react-router-dom";
+import { Button } from "./ui/Button";
+import { CalendarClock, Home as HomeIcon, LineChart, Smile } from "lucide-react";
 
 export default function Layout() {
     return (
         <div>
+            <Outlet />
             <nav>
-                <ul>
-                    <li>
+                <ul className="flex list-none p-0">
+                    <li className="mr-4">
                         <Button asChild>
-                            <Link to="/"><HomeIcon /></Link>
+                            <Link to="/">
+                                <HomeIcon />
+                            </Link>
                         </Button>
                     </li>
-                    <li>
-                        <Link to="/about">About</Link>
+                    <li className="mr-4">
+                        <Link to="/infos">
+                            <LineChart />
+                        </Link>
                     </li>
-                    <li>
-                        <Link to="/dashboard">Dashboard</Link>
+                    <li className="mr-4">
+                        <Link to="/calendar">
+                            <CalendarClock />
+                        </Link>
+                    </li>
+                    <li className="mr-4">
+                        <Link to="/profile">
+                            <Smile />
+                        </Link>
                     </li>
                 </ul>
             </nav>
-
-            <hr/>
-
-            <Outlet/>
+            <hr />
         </div>
     );
 }

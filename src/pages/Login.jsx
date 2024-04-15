@@ -1,4 +1,4 @@
-import { login } from "../api/auth.js";
+import { login } from "../store/auth";
 import { useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -1,4 +1,10 @@
-import { getSleep } from "../api/sleep";
-export async function fetchSleep(tokenStore) {
-  return await getSleep(tokenStore);
-}
+import { api } from "../utils/api";
+
+//custom hook to fetch sleep data
+const fetchSleep = async (userId) => {
+  const tokenStore = localStorage.getItem("token") || "";
+  const data = await api(tokenStore).get(`/program/${userId}`);
+  return data;
+};
+
+export default fetchSleep;

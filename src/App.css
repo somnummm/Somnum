@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   margin: 0 auto;
 }
@@ -7,48 +11,52 @@ h1 {
   line-height: 1.1;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
 }
 
-.titre { 
-  position:relative;
+.titre {
+  position: relative;
   left: 0px;
 }
 
-.infos{
-  display :flex;
-  position: relative; 
+.infos {
+  display: flex;
+  position: relative;
   justify-content: flex-end;
-  }
-.nom, .prenom, .age, .profilSommeil, .profession{
+}
+.nom,
+.prenom,
+.age,
+.profilSommeil,
+.profession {
   position: relative;
   display: flex;
   top: 15px;
   margin-bottom: auto;
   justify-content: left;
 }
-li{
+li {
   font-size: 1.2em;
 }
-.block{
+.block {
   list-style-type: none;
   margin-bottom: 10px;
 }
-.blocInfos{
+.blocInfos {
   display: flex;
   justify-content: left;
 }
-.pageInfosParagraphe{
+.pageInfosParagraphe {
   position: relative;
   display: flex;
   top: 30px;
   text-align: center;
-  left: 0px ;
+  left: 0px;
   overflow-wrap: break-word;
 }
-h2{
+h2 {
   font-size: 1.2em;
   font-weight: lighter;
 }

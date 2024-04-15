@@ -31,11 +31,11 @@ export default function Layout() {
                         setValue(newValue);
                     }}
                 >
+                    <BottomNavigationAction label="Home" icon={<HomeIcon/>} component={Link} to="/"/>
                     <BottomNavigationAction label="Profile" icon={<AccountCircleIcon/>} component={Link} to="/profile"/>
                     <BottomNavigationAction label="Program" icon={<CalendarMonthIcon/>} component={Link}
                                             to="/calendar"/>
                     <BottomNavigationAction label="Data" icon={<BarChartIcon/>} component={Link} to="/dashboard"/>
-                    <BottomNavigationAction label="Home" icon={<HomeIcon/>} component={Link} to="/"/>
                 </BottomNavigation>
             </Paper>
         </Box>

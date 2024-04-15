@@ -4,15 +4,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import HomeIcon from '@mui/icons-material/Home';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Paper from '@mui/material/Paper';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
-import {Outlet} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
+import About from "../pages/About";
 
 export default function Layout() {
     const [value, setValue] = React.useState(0);
@@ -34,48 +31,13 @@ export default function Layout() {
                         setValue(newValue);
                     }}
                 >
-                    <BottomNavigationAction label="Recents" icon={<AccountCircleIcon/>}/>
-                    <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon/>}/>
+                    <BottomNavigationAction label="Profile" icon={<AccountCircleIcon/>} component={Link} to="/profile"/>
+                    <BottomNavigationAction label="Program" icon={<CalendarMonthIcon/>} component={Link}
+                                            to="/calendar"/>
+                    <BottomNavigationAction label="Data" icon={<BarChartIcon/>} component={Link} to="/dashboard"/>
+                    <BottomNavigationAction label="Home" icon={<HomeIcon/>} component={Link} to="/"/>
                 </BottomNavigation>
             </Paper>
         </Box>
     );
 }
-//     {/*<Outlet/>*/
-//     }
-//     {/*<BottomNavigation*/
-//     }
-//     {/*    showLabels*/
-//     }
-//     {/*    value={value}*/
-//     }
-//     {/*    onChange={(event, newValue) => {*/
-//     }
-//     {/*        setValue(newValue);*/
-//     }
-//     {/*    }}*/
-//     }
-//     {/*>*/
-//     }
-//     {/*    <BottomNavigationAction label="Home" icon={<HomeIcon/>}>*/
-//     }
-//     {/*        <Link to={'/'}></Link>*/
-//     }
-//     {/*    </BottomNavigationAction>*/
-//     }
-//     {/*    <BottomNavigationAction label="Charts" icon={<LineChart/>}>*/
-//     }
-//     {/*        <Link to={'/charts'}></Link>*/
-//     }
-//     {/*    </BottomNavigationAction>*/
-//     }
-//     {/*    <BottomNavigationAction label="Calendar" icon={<CalendarClock/>}/>*/
-//     }
-//     {/*    <BottomNavigationAction label="Profile" icon={<Smile/>}/>*/
-//     }
-// //     {/*</BottomNavigation>*/
-// //     }
-// // )
-// //     ;
-// // }

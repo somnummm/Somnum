@@ -10,9 +10,7 @@ export async function login(email, password) {
     email: email,
     password: password,
   });
-  console.log(response.token);
   if (response.token) {
-    console.log("setting token");
     localStorage.setItem("token", response.token);
   }
   return response;

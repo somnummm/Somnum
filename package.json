@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
     "@supabase/supabase-js": "^2.42.4",
     "jotai": "^2.8.0",
     "mande": "^2.0.8",

@@ -1,10 +1,9 @@
-import { atom } from "jotai";
-import { mande } from "mande";
+import {atom} from "jotai";
+import {mande} from "mande";
 
 const api = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const api = mande(`${apiUrl}`);
-  return api;
+  return mande(`${apiUrl}`);
 };
 
 export const token = atom(localStorage.getItem("token") ?? "no token");

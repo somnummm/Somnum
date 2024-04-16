@@ -1,31 +1,46 @@
-import { useState } from "react";
-import "../App.css";
-import utilisateurs from "../mocks/user.json";
+import { useState, useEffect } from "react";
+import "../Profile.css";
+import "../App.css"
+//import utilisateurs from "../mocks/user.json";
+import fetchUserInfo from "../store/profile";
 
-export default function Profile() {
-  const [user] = useState(utilisateurs);
-  // fetch("utilisateurs.json")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     setUser(data);
-  //   });
+const Profile = () => {
+  const userId = 3; // userId de clément 
+  const [user,setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    fetchUserInfo(userId).then((response) => {
+      setUser(response);
+      setIsLoading(false);
+    })
+  }, []);
+  //console.log(user);
+
+
+  return isLoading ? (
+    <div>Chargement...</div>
+  ) : (
     <>
       <div className="container">
         <h1 className="titre">
-          {" "}
-          Bienvenue {user.prenom} {user.nom}{" "}
+          Bienvenue {user.firstName} {user.lastName}
         </h1>
       </div>
       <div className="infos">
         <ul>
           <li className="block">{user.age} ans</li>
           <li className="block"> {user.profilSommeil}</li>
-          <li className="block">{user.profession}</li>
+          <li className="block">{user.Job}</li>
         </ul>
       </div>
-
+      <div className="contact">
+        <ul>
+          <h1 className="contactTitle">Vos coordonnées : </h1>  
+          <li className="mail">{user.email}</li>
+        </ul>
+      </div>
+      <h1 className="programChosen">Vous avez choisi le programme suivant :</h1>
       <div className="blocInfos">
         <h2 className="pageInfosParagraphe">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -42,3 +57,5 @@ export default function Profile() {
     </>
   );
 }
+
+export default Profile;

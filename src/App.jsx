@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Sleep from "./pages/Sleep";
 import Dashboard from "./pages/Dashboard";
 import Night from "./pages/Night";
+import "./Profile.css";
 import "./App.css";
 
 function App() {

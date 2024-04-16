@@ -1,0 +1,54 @@
+#root {
+  margin: 0 auto;
+} 
+.container {
+  display: flex;
+  justify-content: center;
+}
+.titre {
+  position: relative;
+  font-size: 3em;
+  line-height: 1.1;
+}
+.infos {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  line-height: 1.5;
+  font-size: 1.1em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.nom,
+.prenom,
+.age,
+.profilSommeil,
+.profession {
+  position: relative;
+  display: flex;
+  top: 15px;
+  justify-content: left;
+}
+.block {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+.blocInfos {
+  display: flex;
+  justify-content: left;
+}
+.pageInfosParagraphe {
+  position: relative;
+  display: flex;
+  top: 30px;
+  text-align: center;
+  left: 0px;
+  overflow-wrap: break-word;
+}
+h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+}
+li {
+    font-size: 1.3em;
+}

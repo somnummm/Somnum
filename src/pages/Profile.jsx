@@ -45,15 +45,11 @@ const Profile = () => {
       <h1 className="programChosen">Vous avez choisi le programme suivant :</h1>
       <div className="blocInfos">
         <h2 className="pageInfosParagraphe">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged. It was popularised in the 1960s with the release of
-          Letraset sheets containing Lorem Ipsum passages, and more recently
-          with desktop publishing software like Aldus PageMaker including
-          versions of Lorem Ipsum
+          Vous avez choisi tel programme de sommeil alors vous devez aller vous 
+          coucher à X heure afin d'avoir vous Y heures de sommeil. 
+          <br/><br/>
+          Votre programme de sommeil a défini l'heure à laquelle vous devez 
+          aller vous coucher en vous alertant 30 mins avant.
         </h2>
       </div>
     </>

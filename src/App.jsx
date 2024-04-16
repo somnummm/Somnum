@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./layout/Navbar";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
@@ -13,7 +13,7 @@ import {unAuthGuard} from "./guards/authGuard.js";
 function App() {
     return (
         <Routes>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Login/>} onEnter={unAuthGuard}/>
             <Route path="/register" element={<SignUp/>} onEnter={unAuthGuard}/>
             <Route path="/" element={<Navbar/>}>
                 <Route path="dashboard" element={<Dashboard/>}/>

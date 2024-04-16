@@ -50,6 +50,7 @@ const Sleep = () => {
           );
         })}
       </div>
+
       {(() => {
         const selectedEntry = sleep.find(
           (entry) => new Date(entry.date).toLocaleDateString() === dateSelected

@@ -1,7 +1,5 @@
-import {useNavigate} from "react-router-dom";
-
 function isLogged() {
-    return localStorage.getItem('token') !== null;
+  return localStorage.getItem("token") !== null;
 }
 
 export function authGuard(navigation) {

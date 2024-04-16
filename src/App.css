@@ -60,3 +60,21 @@ h2 {
   font-size: 1.2em;
   font-weight: lighter;
 }
+
+/* global */
+:root {
+  --midnight-blue: #2c2267ff;
+  --federal-blue: #241960ff;
+  --rebecca-purple: #543fa6ff;
+  --ghost-white: #efedf4ff;
+  --blue-violet: #923fc2ff;
+}
+
+* {
+  color: var(--ghost-white);
+  background-color: var(--midnight-blue);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

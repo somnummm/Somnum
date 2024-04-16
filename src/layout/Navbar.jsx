@@ -10,22 +10,22 @@ import {authGuard} from "../guards/authGuard.js";
 import DisconnectButton from "../components/DisconnectButton.jsx";
 
 export default function Navbar() {
-  let navigate = useNavigate();
-  useEffect(() => {
-      authGuard(navigate);
-  }, [navigate]);
-  return (
-    <div>
-      <Outlet />
-      <nav>
-        <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
-          <NavItem to="/dashboard" icon={<MoonIcon />} />
-          <NavItem to="/sleep" icon={<CalendarIcon />} />
-          <NavItem to="/night" icon={<NightIcon />} />
-          <NavItem to="/profile" icon={<ProfileIcon />} />
-          <DisconnectButton/>
+    // let navigate = useNavigate();
+    // useEffect(() => {
+    //     authGuard(navigate);
+    // }, [navigate]);
+    return (
+        <div>
+            <Outlet/>
+            <nav>
+                <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
+                    <NavItem to="/dashboard" icon={<MoonIcon/>}/>
+                    <NavItem to="/sleep" icon={<CalendarIcon/>}/>
+                    <NavItem to="/night" icon={<NightIcon/>}/>
+                    <NavItem to="/profile" icon={<ProfileIcon/>}/>
+                    <DisconnectButton/>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  );
+    );
 }

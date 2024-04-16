@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import "../Profile.css";
 import "../App.css"
-//import utilisateurs from "../mocks/user.json";
 import fetchUserInfo from "../store/profile";
+import Loader from "../components/Loader";
 
 const Profile = () => {
-  const userId = 3; // userId de clément 
+  const userId = 3;  
   const [user,setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +19,9 @@ const Profile = () => {
 
 
   return isLoading ? (
-    <div>Chargement...</div>
+    <div className="flex items-center justify-center min-h-screen">
+      <Loader/>
+    </div>
   ) : (
     <>
       <div className="container">

@@ -70,7 +70,7 @@ h2 {
   --blue-violet: #923fc2ff;
 }
 
-* {
+body {
   color: var(--ghost-white);
   background-color: var(--midnight-blue);
   font-family: "Montserrat", sans-serif;

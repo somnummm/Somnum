@@ -15,6 +15,7 @@ const Profile = () => {
       setIsLoading(false);
     })
   }, []);
+  //console.log(user);
 
 
   return isLoading ? (
@@ -33,7 +34,13 @@ const Profile = () => {
           <li className="block">{user.Job}</li>
         </ul>
       </div>
-
+      <div className="contact">
+        <ul>
+          <h1 className="contactTitle">Vos coordonnées : </h1>  
+          <li className="mail">{user.email}</li>
+        </ul>
+      </div>
+      <h1 className="programChosen">Vous avez choisi le programme suivant :</h1>
       <div className="blocInfos">
         <h2 className="pageInfosParagraphe">
           Lorem Ipsum is simply dummy text of the printing and typesetting

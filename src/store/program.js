@@ -1,4 +1,5 @@
 import { supabase } from "../supabaseClient";
+import { atom } from "jotai";
 
 const fetchSleep = async (userId) => {
   let { data: SleepProgram, error } = await supabase
@@ -17,6 +18,7 @@ const insertSleepProgram = async (userId, date, duration) => {
 
   return data;
 };
+
 
 export { fetchSleep, insertSleepProgram };
 

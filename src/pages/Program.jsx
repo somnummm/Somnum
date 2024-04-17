@@ -1,4 +1,4 @@
-import {fetchSleep} from "../store/sleep";
+import {fetchSleep} from "../store/program";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
@@ -87,14 +87,14 @@ const Program = () => {
                 Modifier
               </button>
               
-              {isUpdateModalOpen && <ModalUpdateProgram />}
+              {isUpdateModalOpen && <ModalUpdateProgram setIsUpdateModalOpen={setIsUpdateModalOpen} />}              
               </div>
             </div>
           ) : (
             
             <div className="flex flex-col justify-center">
-              {isCreateModalOpen && <ModalAddProgram />}              
-              <p>Pas de programme</p>
+{isCreateModalOpen && <ModalAddProgram setIsCreateModalOpen={setIsCreateModalOpen} />}              
+<p>Pas de programme</p>
               <div className="flex justify-center"> 
                 <button
                 className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

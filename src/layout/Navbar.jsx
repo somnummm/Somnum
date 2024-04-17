@@ -20,7 +20,7 @@ export default function Navbar() {
       <nav>
         <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
           <NavItem to="/dashboard" icon={<MoonIcon />} />
-          <NavItem to="/sleep" icon={<CalendarIcon />} />
+          <NavItem to="/program" icon={<CalendarIcon />} />
           <NavItem to="/night" icon={<NightIcon />} />
           <NavItem to="/profile" icon={<ProfileIcon />} />
           <DisconnectButton />

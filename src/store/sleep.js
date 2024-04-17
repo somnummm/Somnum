@@ -1,10 +1,6 @@
 import { supabase } from "../supabaseClient";
 
 const fetchSleep = async (userId) => {
-  // const data = await api().get(`/program/${userId}`);
-  // return data;
-  console.log(userId);
-
   let { data: SleepProgram, error } = await supabase
     .from("SleepProgram")
     .select("*");
@@ -13,4 +9,14 @@ const fetchSleep = async (userId) => {
   return SleepProgram;
 };
 
-export default fetchSleep;
+const insertSleepProgram = async (userId, date, duration) => {
+  let { data, error } = await supabase
+    .from("SleepProgram")
+    .insert([{ userId, date, duration }]);
+  if (error) console.log("error", error);
+
+  return data;
+};
+
+export { fetchSleep, insertSleepProgram };
+

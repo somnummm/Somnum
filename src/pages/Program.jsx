@@ -1,6 +1,8 @@
 import {fetchSleep} from "../store/sleep";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
+import ModalAddProgram from "../components/ModalAddProgram";
+import ModalUpdateProgram from "../components/ModalUpdateProgram";
 
 const Program = () => {
   const userId = 3;
@@ -10,6 +12,8 @@ const Program = () => {
   const [dateSelected, setDateSelected] = useState(
     new Date().toLocaleDateString()
   );
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchSleep(userId).then((response) => {
@@ -74,29 +78,30 @@ const Program = () => {
               }
               <div className="flex justify-center"> 
                 <button
-                type="submit"
                 className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                // onClick={(e) => {
-                //   e.preventDefault(email, password);
-                //   login();
-                // }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsUpdateModalOpen(true);
+                }}
               >
                 Modifier
               </button>
+              
+              {isUpdateModalOpen && <ModalUpdateProgram />}
               </div>
             </div>
           ) : (
             
             <div className="flex flex-col justify-center">
+              {isCreateModalOpen && <ModalAddProgram />}              
               <p>Pas de programme</p>
               <div className="flex justify-center"> 
                 <button
-                type="submit"
                 className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                // onClick={(e) => {
-                //   e.preventDefault(email, password);
-                //   login();
-                // }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsCreateModalOpen(true);
+                }}
               >
                 Ajouter
               </button>

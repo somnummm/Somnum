@@ -1,22 +1,18 @@
 import { updateSleepProgram } from "../store/program";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 const ModalUpdateProgram = ({ setIsUpdateModalOpen, date, entity }) => {
   const [sleepTime, setSleepTime] = useState("");
   const [wakeTime, setWakeTime] = useState("");
-  useEffect(() => {
-    setSleepTime(
-      new Date(entity.sleepTime).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    );
-    setWakeTime(
-      new Date(entity.wakeTime).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    );
-  }, [entity]);
+
+  ModalUpdateProgram.propTypes = {
+    setIsUpdateModalOpen: PropTypes.func.isRequired,
+    date: PropTypes.string.isRequired,
+    entity: PropTypes.shape({
+      sleepTime: PropTypes.string.isRequired,
+      wakeTime: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   return (
     <div className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

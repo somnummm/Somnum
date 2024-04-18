@@ -31,27 +31,39 @@ const Night = () => {
     console.log("Sleep duration", sleepDuration / 60, "hours");
 
     const inter = 10;
-    //je veux 20 points pour le graphique
-    const sleepInterval = sleepDuration / inter;
-    //je veux 4 états de sommeil
-    const sleepStates = [0, 1, 2, 3];
-    //génère 20 points pour le graphique mais il faut que cela fasse la durée du sommeil
+    const sleepStates = ["deep", "core", "rem", "awake"];
+    const transitions = {
+      deep: ["core", "rem", "awake"],
+      core: ["deep", "rem"],
+      rem: ["core"],
+      awake: ["core"],
+    };
+
+    let currentState = "deep"; // Commencez par l'état "deep"
+
     for (let i = 0; i < inter; i++) {
-      const state = sleepStates[Math.floor(Math.random() * 4)];
-      const duration = Math.floor(Math.random() * 10) + 5;
+      const possibleStates = transitions[currentState];
+      const state =
+        possibleStates[Math.floor(Math.random() * possibleStates.length)];
+      const duration = Math.floor(Math.random() * 31) + 30; // Durée aléatoire entre 30 et 60 minutes
       const hours = Math.floor(Math.round(currentTime / 60)) % 24;
       const minutes = Math.round(currentTime) % 60;
       const time = `${hours.toString().padStart(2, "0")}:${minutes
         .toString()
         .padStart(2, "0")}`;
+
       sleepData.push({
         time: time,
         duration: duration,
-        state: state,
+        state: sleepStates.indexOf(state),
       });
-      currentTime += sleepInterval;
-    }
 
+      currentTime += duration;
+      currentState = state;
+    }
+    //ajoute un état d'éveil au début et à la fin
+    sleepData[0].state = 3;
+    sleepData[sleepData.length - 1].state = 3;
     setSleepData(sleepData);
     setIsSimulating(false);
     return sleepData;
@@ -100,6 +112,21 @@ const Night = () => {
       },
     },
   };
+  const getColorClass = (state) => {
+    console.log("State", state);
+    switch (state) {
+      case "Deep":
+        return "bg-violet-500";
+      case "Core":
+        return "bg-blue-400";
+      case "REM":
+        return "bg-fuchsia-500";
+      case "Awake":
+        return "bg-amber-400";
+      default:
+        return "";
+    }
+  };
 
   return (
     <div>
@@ -118,29 +145,35 @@ const Night = () => {
       <div className="p-4 bg-blue-500 rounded-lg shadow-lg">
         <Line data={chartData} options={chartOptions} />
       </div>
-      {chartData.labels.length > 0 && (
-        <div>
-          <h2>Détails du sommeil</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Temps</th>
-                <th>Durée</th>
-                <th>État</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sleepData.map((data, index) => (
-                <tr key={index}>
-                  <td>{data.time}</td>
-                  <td>{data.duration}</td>
-                  <td>{getStateName(data.state)}</td>
+      <div className="p-4">
+        <h2 className="text-2xl font-bold mb-4">Détails du sommeil</h2>
+        <table className="w-full table-auto">
+          <thead>
+            <tr>
+              <th className="px-4 py-2">Temps</th>
+              <th className="px-4 py-2">État</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sleepData
+              .reduce((acc, data, index, arr) => {
+                if (index === 0 || data.state !== arr[index - 1].state) {
+                  acc.push(data);
+                }
+                return acc;
+              }, [])
+              .map((data, index) => (
+                <tr
+                  key={index}
+                  className={getColorClass(getStateName(data.state))}
+                >
+                  <td className="px-4 py-2">{data.time}</td>
+                  <td className="px-4 py-2">{getStateName(data.state)}</td>
                 </tr>
               ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

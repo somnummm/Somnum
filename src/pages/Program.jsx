@@ -15,11 +15,15 @@ const Program = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
-  useEffect(() => {
+  const loadInfo = () => {
     fetchSleep(userId).then((response) => {
       setSleep(response);
       setIsLoading(false);
     });
+  };
+
+  useEffect(() => {
+    loadInfo();
   }, []);
 
   return isLoading ? (
@@ -108,6 +112,9 @@ const Program = () => {
               {isUpdateModalOpen && (
                 <ModalUpdateProgram
                   setIsUpdateModalOpen={setIsUpdateModalOpen}
+                  date={dateSelected}
+                  entity={selectedEntry}
+                  reload={loadInfo}
                 />
               )}
             </div>
@@ -118,6 +125,7 @@ const Program = () => {
               <ModalAddProgram
                 setIsCreateModalOpen={setIsCreateModalOpen}
                 date={dateSelected}
+                reload={loadInfo}
               />
             )}
 

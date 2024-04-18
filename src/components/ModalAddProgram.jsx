@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { insertSleepProgram } from "../store/program";
 
-const ModalAddProgram = ({ setIsCreateModalOpen, date }) => {
-  const [sleepTime, setSleepTime] = useState(null);
-  const [wakeTime, setWakeTime] = useState(null);
+const ModalAddProgram = ({ setIsCreateModalOpen, date, reload }) => {
+  const [sleepTime, setSleepTime] = useState("");
+  const [wakeTime, setWakeTime] = useState("");
   return (
     <main>
       <div className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -80,10 +80,12 @@ const ModalAddProgram = ({ setIsCreateModalOpen, date }) => {
               </div>
               <div className="flex justify-center">
                 <button
+                  type="submit"
                   className="text-white inline-flex items-center bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   onClick={() => {
                     insertSleepProgram(date, sleepTime, wakeTime);
                     setIsCreateModalOpen(false);
+                    reload();
                   }}
                 >
                   <svg

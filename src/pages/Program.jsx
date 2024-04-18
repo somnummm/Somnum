@@ -1,4 +1,4 @@
-import {fetchSleep} from "../store/program";
+import { fetchSleep } from "../store/program";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
@@ -59,25 +59,43 @@ const Program = () => {
         const selectedEntry = sleep.find(
           (entry) => new Date(entry.date).toLocaleDateString() === dateSelected
         );
-        return (
-          selectedEntry ? (
-            <div>
-              <strong>Sleep Time:</strong>
-              <p>{new Date(selectedEntry.sleepTime).toLocaleTimeString()} </p>
-              <strong>Wake Time:</strong>
-              <p>{new Date(selectedEntry.wakeTime).toLocaleTimeString()} </p>
-              <strong>Duration:</strong>
-              {
+        return selectedEntry ? (
+          <div className="mt-4">
+            <div className="flex justify-between items-center mb-4">
+              <div>
+                <strong>Heure de coucher:</strong>
                 <p>
-                  {Math.floor(
-                    (new Date(selectedEntry.wakeTime) -
-                      new Date(selectedEntry.sleepTime)) /
-                      1000 / 60 / 60
-                  )} hours
+                  {new Date(selectedEntry.sleepTime).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
                 </p>
-              }
-              <div className="flex justify-center"> 
-                <button
+              </div>
+              <div>
+                <strong>Heure de réveil:</strong>
+                <p>
+                  {new Date(selectedEntry.wakeTime).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <strong>Temps de sommeil:</strong>
+              <p>
+                {Math.floor(
+                  (new Date(selectedEntry.wakeTime) -
+                    new Date(selectedEntry.sleepTime)) /
+                    1000 /
+                    60 /
+                    60
+                )}{" "}
+                heures
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <button
                 className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={(e) => {
                   e.preventDefault();
@@ -86,17 +104,27 @@ const Program = () => {
               >
                 Modifier
               </button>
-              
-              {isUpdateModalOpen && <ModalUpdateProgram setIsUpdateModalOpen={setIsUpdateModalOpen} />}              
-              </div>
+
+              {isUpdateModalOpen && (
+                <ModalUpdateProgram
+                  setIsUpdateModalOpen={setIsUpdateModalOpen}
+                />
+              )}
             </div>
-          ) : (
-            
-            <div className="flex flex-col justify-center">
-{isCreateModalOpen && <ModalAddProgram setIsCreateModalOpen={setIsCreateModalOpen} />}              
-<p>Pas de programme</p>
-              <div className="flex justify-center"> 
-                <button
+          </div>
+        ) : (
+          <div className="flex flex-col justify-center">
+            {isCreateModalOpen && (
+              <ModalAddProgram
+                setIsCreateModalOpen={setIsCreateModalOpen}
+                date={dateSelected}
+              />
+            )}
+
+            <p>Pas de programme</p>
+            <p>{dateSelected}</p>
+            <div className="flex justify-center">
+              <button
                 className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={(e) => {
                   e.preventDefault();
@@ -105,9 +133,8 @@ const Program = () => {
               >
                 Ajouter
               </button>
-              </div>
             </div>
-          )
+          </div>
         );
       })()}
     </div>

@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
 import "../Profile.css";
-import "../App.css"
+import "../App.css";
 //import utilisateurs from "../mocks/user.json";
 import fetchUserInfo from "../store/profile";
 
 const Profile = () => {
-  const userId = 3; // userId de clément 
-  const [user,setUser] = useState(null);
+  const userId = 3; // userId de clément
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchUserInfo(userId).then((response) => {
       setUser(response);
       setIsLoading(false);
-    })
+    });
   }, []);
   //console.log(user);
-
 
   return isLoading ? (
     <div>Chargement...</div>
@@ -31,12 +30,12 @@ const Profile = () => {
         <ul>
           <li className="block">{user.age} ans</li>
           <li className="block"> {user.profilSommeil}</li>
-          <li className="block">{user.Job}</li>
+          <li className="block">{user.job}</li>
         </ul>
       </div>
       <div className="contact">
         <ul>
-          <h1 className="contactTitle">Vos coordonnées : </h1>  
+          <h1 className="contactTitle">Vos coordonnées : </h1>
           <li className="mail">{user.email}</li>
         </ul>
       </div>
@@ -56,6 +55,6 @@ const Profile = () => {
       </div>
     </>
   );
-}
+};
 
 export default Profile;

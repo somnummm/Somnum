@@ -1,7 +1,7 @@
 import { supabase } from "../supabaseClient";
-import { atom } from "jotai";
+import moment from "moment";
 
-const fetchSleep = async (userId) => {
+const fetchSleep = async () => {
   let { data: SleepProgram, error } = await supabase
     .from("SleepProgram")
     .select("*");
@@ -10,15 +10,38 @@ const fetchSleep = async (userId) => {
   return SleepProgram;
 };
 
-const insertSleepProgram = async (userId, date, duration) => {
-  let { data, error } = await supabase
-    .from("SleepProgram")
-    .insert([{ userId, date, duration }]);
+const insertSleepProgram = async (date, sleepTime, wakeTime) => {
+  const userId = localStorage.getItem("userId") || 3;
+  const dateMoment = moment(date, "DD/MM/YYYY");
+  const nextDay = moment(date, "DD/MM/YYYY").add(1, "days");
+  const sleepTimeMoment = moment(sleepTime, "HH:mm");
+  const wakeTimeMoment = moment(wakeTime, "HH:mm");
+
+  const combinedSleepDateTime = dateMoment
+    .set({
+      hour: sleepTimeMoment.get("hour"),
+      minute: sleepTimeMoment.get("minute"),
+    })
+    .format();
+
+  const combinedWakeDateTime = nextDay
+    .set({
+      hour: wakeTimeMoment.get("hour"),
+      minute: wakeTimeMoment.get("minute"),
+    })
+    .format();
+
+  let { data, error } = await supabase.from("SleepProgram").insert([
+    {
+      userId: userId,
+      date: dateMoment.format(),
+      sleepTime: combinedSleepDateTime,
+      wakeTime: combinedWakeDateTime,
+    },
+  ]);
   if (error) console.log("error", error);
 
   return data;
 };
 
-
 export { fetchSleep, insertSleepProgram };
-

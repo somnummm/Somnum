@@ -21,18 +21,38 @@ const Night = () => {
     LineElement
   );
 
+  //il faut générer un objet {time: 0, duration: 60, state: 0} pour chaque tranche de sommeil
   const generateSleepData = async () => {
     const sleepData = [];
-    let currentTime = 0;
-    while (currentTime < 480) {
-      const duration = Math.floor(Math.random() * 60) + 30; // Durée aléatoire entre 30 et 90 minutes
-      const state = Math.floor(Math.random() * 3);
-      setSleepData((prevSleepData) => [
-        ...prevSleepData,
-        { time: currentTime, duration, state },
-      ]);
-      currentTime += duration;
+    let currentTime = 1320; //22h en minutes
+
+    //génère un nombre de minutes de sommeil aléatoire entre 8 et 10h (480 et 600 minutes)
+    const sleepDuration = Math.floor(Math.random() * 120) + 480;
+    console.log("Sleep duration", sleepDuration / 60, "hours");
+
+    const inter = 10;
+    //je veux 20 points pour le graphique
+    const sleepInterval = sleepDuration / inter;
+    //je veux 4 états de sommeil
+    const sleepStates = [0, 1, 2, 3];
+    //génère 20 points pour le graphique mais il faut que cela fasse la durée du sommeil
+    for (let i = 0; i < inter; i++) {
+      const state = sleepStates[Math.floor(Math.random() * 4)];
+      const duration = Math.floor(Math.random() * 10) + 5;
+      const hours = Math.floor(Math.round(currentTime / 60)) % 24;
+      const minutes = Math.round(currentTime) % 60;
+      const time = `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}`;
+      sleepData.push({
+        time: time,
+        duration: duration,
+        state: state,
+      });
+      currentTime += sleepInterval;
     }
+
+    setSleepData(sleepData);
     setIsSimulating(false);
     return sleepData;
   };
@@ -76,12 +96,7 @@ const Night = () => {
       y: {
         id: "states",
         type: "category",
-        labels: [
-          "Sommeil paradoxal",
-          "Sommeil profond",
-          "Sommeil léger",
-          "État classique",
-        ],
+        labels: ["Awake", "REM", "Core", "Deep"],
       },
     },
   };

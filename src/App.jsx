@@ -7,7 +7,6 @@ import Profile from "./pages/Profile";
 import Program from "./pages/Program";
 import Dashboard from "./pages/Dashboard";
 import Night from "./pages/Night";
-import "./Profile.css";
 import "./App.css";
 
 function App() {

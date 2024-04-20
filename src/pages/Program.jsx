@@ -32,7 +32,10 @@ const Program = () => {
     </div>
   ) : (
     <div>
-      <h1>Programme</h1>
+      <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
+        Programme
+      </h2>
+
       <p>UserId: {userId}</p>
       <div className="grid grid-cols-7 gap-2">
         {[...Array(7)].map((_, index) => {

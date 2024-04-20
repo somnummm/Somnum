@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import generateSleepData from "../store/night";
 import LoaderNight from "../components/LoaderNight";
+import { ArrowDown } from "../assets/icons/arrowDown";
 import { Line } from "react-chartjs-2";
 import {
   Chart,
@@ -15,6 +16,8 @@ const Night = () => {
   const [sleepData, setSleepData] = useState([]);
   const [isSimulating, setIsSimulating] = useState(false);
   const [isSimulated, setIsSimulated] = useState(false);
+  const [isDetailDisplayed, setIsDetailDisplayed] = useState(false);
+  const [stats, setStats] = useState({});
 
   Chart.register(
     CategoryScale,
@@ -23,18 +26,36 @@ const Night = () => {
     PointElement,
     LineElement
   );
+  const calculateTotalTimePerState = (data) => {
+    return data.reduce((acc, curr) => {
+      if (!acc[curr.state]) {
+        acc[curr.state] = 0;
+      }
+      acc[curr.state] += curr.duration;
+      return acc;
+    }, {});
+  };
 
   const simulateSleep = async () => {
     setIsSimulating(true);
     const newData = await generateSleepData();
     setSleepData(newData);
-
-    //arrrête l'animation après 10 secondes
     setTimeout(() => {
       setIsSimulating(false);
       setIsSimulated(true);
-    }, 10000);
+    }, 1000);
   };
+
+  useEffect(() => {
+    const updateStats = async () => {
+      const totalTimePerState = await calculateTotalTimePerState(sleepData);
+      setStats(totalTimePerState);
+    };
+
+    if (isSimulated) {
+      updateStats();
+    }
+  }, [sleepData, isSimulated]);
 
   const getStateName = (state) => {
     switch (state) {
@@ -59,6 +80,7 @@ const Night = () => {
         borderColor: "white",
         tension: 0.1,
         yAxisID: "states",
+        color: "white",
       },
     ],
   };
@@ -73,7 +95,6 @@ const Night = () => {
     },
   };
   const getColorClass = (state) => {
-    console.log("State", state);
     switch (state) {
       case "Deep":
         return "bg-violet-500";
@@ -90,7 +111,10 @@ const Night = () => {
 
   return (
     <div>
-      <h1>Suivi du sommeil</h1>
+      <h1 className="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-purple-400 via-purple-600 to-purple-700 bg-clip-text text-4xl font-extrabold text-transparent text-center select-auto">
+        Suivi du sommeil
+      </h1>
+
       {!isSimulating && !isSimulated && (
         <div className="flex items-center justify-center min-h-screen">
           <button
@@ -114,37 +138,66 @@ const Night = () => {
 
       {isSimulated && (
         <main>
-          <div className="p-4 bg-blue-500 rounded-lg shadow-lg">
+          <div className="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 rounded-lg shadow-lg">
             <Line data={chartData} options={chartOptions} />
           </div>
-          <div className="p-4 mb-10">
-            <h2 className="text-2xl font-bold mb-4">Détails du sommeil</h2>
-            <table className="w-full table-auto ">
-              <thead>
-                <tr>
-                  <th className="px-4 py-2">Heure</th>
-                  <th className="px-4 py-2">État</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sleepData
-                  .reduce((acc, data, index, arr) => {
-                    if (index === 0 || data.state !== arr[index - 1].state) {
-                      acc.push(data);
-                    }
-                    return acc;
-                  }, [])
-                  .map((data, index) => (
-                    <tr
+          <div>
+            <h2 className="text-2xl font-bold mb-4 flex items-center">Stats</h2>
+
+            <div className="flex flex-col items-center">
+              <div className="grid grid-cols-2 gap-4">
+                {stats &&
+                  Object.keys(stats).map((key, index) => (
+                    <div
                       key={index}
-                      className={getColorClass(getStateName(data.state))}
+                      className={`${getColorClass(
+                        getStateName(parseInt(key))
+                      )} block max-w-sm p-4  rounded-lg shadow `}
                     >
-                      <td className="px-4 py-2">{data.time}</td>
-                      <td className="px-4 py-2">{getStateName(data.state)}</td>
-                    </tr>
+                      <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
+                        {getStateName(parseInt(key))}
+                      </h5>
+                      <p className="font-normal text-gray-700 dark:text-gray-400">
+                        {stats[key]} minutes
+                      </p>
+                    </div>
                   ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 mb-10">
+            <h2 className="text-2xl font-bold mb-4 flex items-center">
+              Détails du sommeil
+              <ArrowDown
+                onClick={() => {
+                  setIsDetailDisplayed(!isDetailDisplayed);
+                }}
+              />
+            </h2>
+            {isDetailDisplayed && (
+              <div className="w-full table-auto ">
+                <div>
+                  {sleepData
+                    .reduce((acc, data, index, arr) => {
+                      if (index === 0 || data.state !== arr[index - 1].state) {
+                        acc.push(data);
+                      }
+                      return acc;
+                    }, [])
+                    .map((data, index) => (
+                      <div
+                        key={index}
+                        className={`${getColorClass(
+                          getStateName(data.state)
+                        )} flex justify-between items-center mb-4  rounded-md `}
+                      >
+                        <p className="px-4 py-2">{data.time}</p>
+                        <p className="px-4 py-2">{getStateName(data.state)}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
         </main>
       )}

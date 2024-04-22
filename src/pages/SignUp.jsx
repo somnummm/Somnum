@@ -13,6 +13,8 @@ const SignUp = () => {
         const [password, setPassword] = useState("");
         const [firstName, setFirstName] = useState("");
         const [lastName, setLastName] = useState("");
+        const [age, setAge] = useState("");
+        const [job, setJob] = useState("");
 
         return (
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -38,12 +40,22 @@ const SignUp = () => {
                                    type={"text"}/>
                         <AuthInput field={lastName} fieldSetter={setLastName} labelName={"Nom"} id={"lastName"}
                                    type={"text"}/>
+                        <AuthInput field={age} fieldSetter={setAge} labelName={"Age"} id={"age"}
+                                   type={"number"}/>
+                        <AuthInput field={job} fieldSetter={setJob} labelName={"Job"} id={"job"}
+                                   type={"text"}/>
                         <div>
                             <button
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={(e) => {
-                                    register(email, firstName, lastName, password).then(() => navigate("/login"));
+                                    if (email && password && firstName && lastName && age && job) {
+                                        e.preventDefault();
+                                        register(email, password, firstName, lastName, age, job)
+                                            .then(r => navigate("/dashboard"));
+                                    } else {
+                                        return false;
+                                    }
                                 }}
                             >
                                 S'inscrire

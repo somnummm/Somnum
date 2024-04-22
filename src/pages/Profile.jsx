@@ -4,12 +4,11 @@ import "../App.css";
 import fetchUserInfo from "../store/profile";
 
 const Profile = () => {
-  const userId = 3; // userId de clément
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchUserInfo(userId).then((response) => {
+    fetchUserInfo().then((response) => {
       setUser(response);
       setIsLoading(false);
     });

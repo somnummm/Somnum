@@ -1,19 +1,19 @@
-import { Outlet } from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import NavItem from "../components/NavItem";
 import NightIcon from "../assets/icons/night.jsx";
 import ProfileIcon from "../assets/icons/profile.jsx";
 import MoonIcon from "../assets/icons/moon.jsx";
 import CalendarIcon from "../assets/icons/calendar.jsx";
 import "../styles/navbar.css";
-// import { useEffect } from "react";
-// import { authGuard } from "../guards/authGuard.js";
 import DisconnectButton from "../components/DisconnectButton.jsx";
+import {authGuard} from "../guards/authGuard.js";
+import {useEffect} from "react";
 
 export default function Navbar() {
-  // let navigate = useNavigate();
-  // useEffect(() => {
-  //   authGuard(navigate);
-  // }, [navigate]);
+  let navigate = useNavigate();
+  useEffect(() => {
+    authGuard(navigate);
+  }, [navigate]);
   return (
     <div>
       <Outlet />

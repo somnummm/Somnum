@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 const Citation = () => {
   const strings = [
     '"Le sommeil est la meilleure des méditations." - Dalai Lama',
-    '"Le sommeil est la clé qui ouvre la porte à un esprit rafraîchi et à un corps régénéré." - Unknown',
+    '"Le sommeil est la clé qui ouvre la porte à un esprit rafraîchi et à un corps régénéré." - Inconnu',
     '"Le sommeil est la nourriture du cerveau. Comme tout autre organe, il a besoin de repos et de récupération." - John Wooden',
     '"Un sommeil suffisant, une alimentation saine, de l\'exercice physique et une paix intérieure sont les fondations d\'une bonne santé." - Deepak Chopra',
     '"Le sommeil est la colonne vertébrale de la santé." - Mehmet Oz',

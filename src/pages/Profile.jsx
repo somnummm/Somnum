@@ -26,7 +26,7 @@ const Profile = () => {
   ) : (
     <>
       <div className="container">
-        <h1 className="titre">
+        <h1 className=" shadow-2xl rounded-lg text-center text-2.5xl leading-relaxed overflow-wrap-break m-2">
           Bienvenue {user.firstName} {user.lastName}
         </h1>
       </div>
@@ -37,14 +37,16 @@ const Profile = () => {
           <li className="block">{user.Job}</li>
         </ul>
       </div>
-      <div className="contact">
-        <ul>
+      <div className=" justify-start leading-6 pb-14 mx-4">
+        <ul className="border border-solid border-white rounded-lg pl-2 mr-16 shadow-md">
           <h1 className="contactTitle">Vos coordonnées : </h1>  
           <li className="mail">{user.email}</li>
         </ul>
       </div>
-      <div className="cardProgram">
-      <h1 className="programChosen">Vous avez choisi le programme suivant :</h1>
+      <div className='relative border border-solid border-purple-900 rounded-lg p-2 mx-4 shadow-xl'>
+      <div className="absolute top-0 left-0 w-full h-full bg-violet-400 opacity-70 rounded-lg"></div>
+      <div className="relative z-10 text-white">
+      <h1 className=''>Vous avez choisi le programme suivant :</h1>
       <div className="blocInfos">
         <h2 className="pageInfosParagraphe">
           Vous avez choisi tel programme de sommeil alors vous devez aller vous 
@@ -55,7 +57,8 @@ const Profile = () => {
         </h2>
       </div>
       </div>
-      <div className="border border-solid border-gray-300 rounded-lg p-4 mt-4 pl-10 bg-white opacity-70 text-black">
+      </div>
+      <div className="border border-solid border-gray-300 rounded-lg p-4 mt-4 mx-4 pl-10 bg-white opacity-70 text-black">
         <Citation/>
       </div>
     </>

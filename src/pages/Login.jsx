@@ -28,8 +28,8 @@ const Login = () => {
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" action="#" method="POST">
-                    <AuthInput fieldSetter={setEmail} type={email} labelName={"Adresse mail"} id={"email"}/>
-                    <AuthInput fieldSetter={setPassword} type={password} labelName={"Mot de passe"} id={"email"}
+                    <AuthInput fieldSetter={setEmail} type={"email"} labelName={"Adresse mail"} id={"email"}/>
+                    <AuthInput fieldSetter={setPassword} type={"password"} labelName={"Mot de passe"} id={"email"}
                                additionalBlock={"Mot de passe oublié?"} additionalBlockLink={"#"}/>
                     <button
                         type="submit"

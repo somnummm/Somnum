@@ -2,9 +2,14 @@ import { supabase } from "../supabaseClient";
 import moment from "moment";
 
 const fetchSleep = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log(user.id);
   let { data: SleepProgram, error } = await supabase
     .from("SleepProgram")
-    .select("*");
+    .select("*")
+    .eq("userId", user.id);
   if (error) console.log("error", error);
 
   return SleepProgram;

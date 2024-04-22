@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
 import ModalUpdateProgram from "../components/ModalUpdateProgram";
+// import { supabase } from "../supabaseClient";
 
 const Program = () => {
   const userId = 3;

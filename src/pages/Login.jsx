@@ -2,7 +2,7 @@ import {auth} from "../store/auth";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import AuthInput from "../components/AuthInput.jsx";
-import {authGuard, unAuthGuard} from "../guards/authGuard.js";
+import {unAuthGuard} from "../guards/authGuard.js";
 
 const Login = () => {
     let navigate = useNavigate();

@@ -6,7 +6,6 @@ import ModalUpdateProgram from "../components/ModalUpdateProgram";
 // import { supabase } from "../supabaseClient";
 
 const Program = () => {
-  const userId = 3;
   const [sleep, setSleep] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [daySelected, setDaySelected] = useState(0);
@@ -17,7 +16,7 @@ const Program = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   const loadInfo = () => {
-    fetchSleep(userId).then((response) => {
+    fetchSleep().then((response) => {
       setSleep(response);
       setIsLoading(false);
     });
@@ -37,7 +36,6 @@ const Program = () => {
         Programme
       </h2>
 
-      <p>UserId: {userId}</p>
       <div className="grid grid-cols-7 gap-2">
         {[...Array(7)].map((_, index) => {
           const date = new Date();

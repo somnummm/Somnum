@@ -5,7 +5,6 @@ const fetchSleep = async () => {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log(user.id);
   let { data: SleepProgram, error } = await supabase
     .from("SleepProgram")
     .select("*")
@@ -16,7 +15,10 @@ const fetchSleep = async () => {
 };
 
 const insertSleepProgram = async (date, sleepTime, wakeTime) => {
-  const userId = localStorage.getItem("userId") || 3;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const userId = user.id;
   const dateMoment = moment(date, "DD/MM/YYYY");
   const nextDay = moment(date, "DD/MM/YYYY").add(1, "days");
   const sleepTimeMoment = moment(sleepTime, "HH:mm");

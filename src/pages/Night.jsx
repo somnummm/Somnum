@@ -111,9 +111,9 @@ const Night = () => {
 
   return (
     <div>
-      <h1 className="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-purple-400 via-purple-600 to-purple-700 bg-clip-text text-4xl font-extrabold text-transparent text-center select-auto">
+      <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
         Suivi du sommeil
-      </h1>
+      </h2>
 
       {!isSimulating && !isSimulated && (
         <div className="flex items-center justify-center min-h-screen">

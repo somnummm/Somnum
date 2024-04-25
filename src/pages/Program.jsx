@@ -36,7 +36,7 @@ const Program = () => {
         Programme
       </h2>
 
-      <div className="grid grid-cols-7 gap-2 mt-4">
+      <div className="grid grid-cols-7 gap-2 my-4">
         {[...Array(7)].map((_, index) => {
           const date = new Date();
           date.setDate(date.getDate() + index);
@@ -45,7 +45,9 @@ const Program = () => {
             <div
               key={index}
               className={`flex flex-col items-center justify-center ${
-                daySelected === index ? "selected-card" : ""
+                daySelected === index
+                  ? "selected-card bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
+                  : ""
               }`}
               onClick={() => {
                 setDaySelected(index);
@@ -135,7 +137,7 @@ const Program = () => {
             <p>{dateSelected}</p>
             <div className="flex justify-center">
               <button
-                className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsCreateModalOpen(true);

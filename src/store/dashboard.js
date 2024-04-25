@@ -16,4 +16,10 @@ const fetchLastNight = async () => {
   return Night;
 };
 
-export { fetchLastNight };
+const fetchAdvice = async () => {
+  let { data: Advice, error } = await supabase.from("Advice").select("*");
+  if (error) console.log("error", error);
+  return Advice;
+};
+
+export { fetchLastNight, fetchAdvice };

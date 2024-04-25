@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
 import ModalUpdateProgram from "../components/ModalUpdateProgram";
-// import { supabase } from "../supabaseClient";
+import "../styles/program.css";
 
 const Program = () => {
-  const userId = 3;
   const [sleep, setSleep] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [daySelected, setDaySelected] = useState(0);
@@ -17,7 +16,7 @@ const Program = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   const loadInfo = () => {
-    fetchSleep(userId).then((response) => {
+    fetchSleep().then((response) => {
       setSleep(response);
       setIsLoading(false);
     });
@@ -37,8 +36,7 @@ const Program = () => {
         Programme
       </h2>
 
-      <p>UserId: {userId}</p>
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-2 my-4">
         {[...Array(7)].map((_, index) => {
           const date = new Date();
           date.setDate(date.getDate() + index);
@@ -47,7 +45,9 @@ const Program = () => {
             <div
               key={index}
               className={`flex flex-col items-center justify-center ${
-                daySelected === index ? "bg-red-500" : ""
+                daySelected === index
+                  ? "selected-card bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
+                  : ""
               }`}
               onClick={() => {
                 setDaySelected(index);
@@ -89,7 +89,7 @@ const Program = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mt-4">
               <strong>Temps de sommeil:</strong>
               <p>
                 {Math.floor(
@@ -102,9 +102,9 @@ const Program = () => {
                 heures
               </p>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-4">
               <button
-                className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsUpdateModalOpen(true);
@@ -137,7 +137,7 @@ const Program = () => {
             <p>{dateSelected}</p>
             <div className="flex justify-center">
               <button
-                className=" rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsCreateModalOpen(true);

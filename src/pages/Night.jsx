@@ -11,6 +11,7 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
+import { Universe } from "../assets/universe";
 
 const Night = () => {
   const [sleepData, setSleepData] = useState([]);
@@ -111,22 +112,29 @@ const Night = () => {
 
   return (
     <div>
-      <h1 className="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-purple-400 via-purple-600 to-purple-700 bg-clip-text text-4xl font-extrabold text-transparent text-center select-auto">
+      <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
         Suivi du sommeil
-      </h1>
+      </h2>
 
       {!isSimulating && !isSimulated && (
-        <div className="flex items-center justify-center min-h-screen">
-          <button
-            type="submit"
-            // className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            onClick={() => {
-              simulateSleep();
-            }}
-          >
-            Démarrer le suivi du sommeil
-          </button>
+        <div>
+          <div>
+            <div className="flex flex-col items-center justify-center min-h-screen">
+              <div className="w-screen flex justify-center overflow-hidden">
+                <Universe />
+              </div>
+              <button
+                type="submit"
+                // className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                onClick={() => {
+                  simulateSleep();
+                }}
+              >
+                Démarrer le suivi du sommeil
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -143,7 +151,6 @@ const Night = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-4 flex items-center">Stats</h2>
-
             <div className="flex flex-col items-center">
               <div className="grid grid-cols-2 gap-4">
                 {stats &&
@@ -152,7 +159,7 @@ const Night = () => {
                       key={index}
                       className={`${getColorClass(
                         getStateName(parseInt(key))
-                      )} block max-w-sm p-4  rounded-lg shadow `}
+                      )} block max-w-sm p-6  rounded-lg shadow `}
                     >
                       <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         {getStateName(parseInt(key))}

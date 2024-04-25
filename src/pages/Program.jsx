@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
 import ModalUpdateProgram from "../components/ModalUpdateProgram";
-// import { supabase } from "../supabaseClient";
+import "../styles/program.css";
 
 const Program = () => {
   const [sleep, setSleep] = useState(null);
@@ -36,7 +36,7 @@ const Program = () => {
         Programme
       </h2>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-2 mt-4">
         {[...Array(7)].map((_, index) => {
           const date = new Date();
           date.setDate(date.getDate() + index);
@@ -45,7 +45,7 @@ const Program = () => {
             <div
               key={index}
               className={`flex flex-col items-center justify-center ${
-                daySelected === index ? "bg-red-500" : ""
+                daySelected === index ? "selected-card" : ""
               }`}
               onClick={() => {
                 setDaySelected(index);

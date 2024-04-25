@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import "../Profile.css";
-import "../App.css";
+import "../styles/profile.css";
 import fetchUserInfo from "../store/profile";
 
 const Profile = () => {

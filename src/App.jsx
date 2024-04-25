@@ -17,16 +17,18 @@ function App() {
       <div className="particle"></div>
       <div className="particle"></div>
       <div className="particle"></div>
-      <Routes>
-        <Route path="/login" element={<Login />} onEnter={unAuthGuard} />
-        <Route path="/register" element={<SignUp />} onEnter={unAuthGuard} />
-        <Route path="/" element={<Navbar />}>
-          <Route path="" element={<Dashboard />} />
-          <Route path="program" element={<Program />} />
-          <Route path="night" element={<Night />} />
-          <Route path="profile" element={<Profile />} />
-        </Route>
-      </Routes>
+      <div className="front">
+        <Routes>
+          <Route path="/login" element={<Login />} onEnter={unAuthGuard} />
+          <Route path="/register" element={<SignUp />} onEnter={unAuthGuard} />
+          <Route path="/" element={<Navbar />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="program" element={<Program />} />
+            <Route path="night" element={<Night />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </div>
     </div>
   );
 }

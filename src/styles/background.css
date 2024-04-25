@@ -5,6 +5,14 @@
   background-color: var(--midnight-blue);
 }
 
+.particle {
+  position: relative;
+  z-index: 1;
+}
+.front {
+  z-index: 100;
+}
+
 .particle,
 .particle::after {
   background: transparent;

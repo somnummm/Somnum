@@ -28,11 +28,11 @@ const Dashboard = () => {
       <Loader />
     </div>
   ) : (
-    <div>
+    <div className="pb-10">
       <h2 className="text-2xl font-bold text-gray-50">Tableau de bord</h2>
       <DashboardInfo info={lastNight} />
-      <DashboardAdvice advice={advice} />
-      <div>
+      <DashboardAdvice advice={advice} className="mb-8" />
+      {/* <div>
         <p>Todo</p>
         <ul>
           <li>Afficher la durée de la dernière nuit</li>
@@ -42,7 +42,7 @@ const Dashboard = () => {
             lui faire des comparaisons avec des données mondiales de sommeil
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

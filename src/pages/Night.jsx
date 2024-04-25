@@ -143,7 +143,6 @@ const Night = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-4 flex items-center">Stats</h2>
-
             <div className="flex flex-col items-center">
               <div className="grid grid-cols-2 gap-4">
                 {stats &&
@@ -152,7 +151,7 @@ const Night = () => {
                       key={index}
                       className={`${getColorClass(
                         getStateName(parseInt(key))
-                      )} block max-w-sm p-4  rounded-lg shadow `}
+                      )} block max-w-sm p-6  rounded-lg shadow `}
                     >
                       <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         {getStateName(parseInt(key))}

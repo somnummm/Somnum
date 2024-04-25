@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/profile.css";
 import fetchUserInfo from "../store/profile";
+import Loader from "../components/Loader";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -14,7 +15,9 @@ const Profile = () => {
   }, []);
 
   return isLoading ? (
-    <div>Chargement...</div>
+    <div className="flex items-center justify-center min-h-screen">
+      <Loader />
+    </div>
   ) : (
     <>
       <div className="container">

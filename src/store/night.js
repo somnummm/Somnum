@@ -4,7 +4,7 @@ const generateSleepData = async () => {
   let currentTime = 1320; //22h en minutes
 
   //génère un nombre de minutes de sommeil aléatoire entre 8 et 10h (480 et 600 minutes)
-  const sleepDuration = Math.floor(Math.random() * 120) + 480;
+  //const sleepDuration = Math.floor(Math.random() * 120) + 480;
 
   const inter = 10;
   const sleepStates = ["deep", "core", "rem", "awake"];

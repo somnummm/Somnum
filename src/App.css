@@ -48,7 +48,7 @@ body {
 .particle::after {
   position: absolute;
   content: "";
-  top: 2560px;
+  /* top: 2560px; */
 }
 
 .particle:nth-child(1) {

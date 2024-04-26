@@ -7,7 +7,7 @@ const DashboardInfo = ({ info }) => {
             Heure de coucher
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            {info[0].sleep_time}
+            {info[0]?.sleep_time ? info[0].sleep_time : "Pas de données"}
           </p>
         </div>
 
@@ -16,7 +16,7 @@ const DashboardInfo = ({ info }) => {
             Heure de réveil
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            {info[0].wake_time}
+            {info[0]?.wake_time ? info[0].wake_time : "Pas de données"}
           </p>
         </div>
 

@@ -15,7 +15,7 @@ export default function Navbar() {
     }, [navigate]);
     return (
         <div>
-            <div className="pb-2">
+            <div className="pb-16">
                 <Outlet/>
             </div>
             <nav>

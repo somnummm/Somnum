@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
 import ModalUpdateProgram from "../components/ModalUpdateProgram";
 import "../styles/program.css";
+import PageTitle from "../components/PageTitle.jsx";
 
 const Program = () => {
   const [sleep, setSleep] = useState(null);
@@ -32,9 +33,8 @@ const Program = () => {
     </div>
   ) : (
     <div>
-      <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
-        Programme
-      </h2>
+      <PageTitle title="Programme" />
+
 
       <div className="grid grid-cols-7 gap-2 my-4">
         {[...Array(7)].map((_, index) => {

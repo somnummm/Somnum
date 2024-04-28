@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import {Universe} from "../assets/universe";
 import {supabase} from "../supabaseClient.js";
+import PageTitle from "../components/PageTitle.jsx";
 
 const Night = () => {
 
@@ -115,14 +116,13 @@ const Night = () => {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
-                Suivi du sommeil
-            </h2>
+            <PageTitle title="Suivi du sommeil" />
+
 
             {!isSimulating && !isSimulated && (
                 <div>
                     <div>
-                        <div className="flex flex-col items-center justify-center min-h-screen">
+                        <div className="flex flex-col items-center justify-center min-h-full">
                             <div className="w-screen flex justify-center overflow-hidden">
                                 <Universe/>
                             </div>

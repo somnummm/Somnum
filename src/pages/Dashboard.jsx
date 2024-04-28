@@ -29,7 +29,7 @@ const Dashboard = () => {
     </div>
   ) : (
     <div className="pb-10">
-      <h2 className="text-2xl font-bold text-gray-50">Tableau de bord</h2>
+      <h2 className="flex text-2xl font-bold text-gray-50 justify-center m-2">Tableau de bord</h2>
       <DashboardInfo info={lastNight} />
       <DashboardAdvice advice={advice} className="mb-8" />
       {/* <div>

@@ -16,5 +16,9 @@ export async function auth(email, password) {
         password: password,
     });
 
+    if (response.error) {
+        throw new Error(response.error.message);
+    }
+
     return response;
 }

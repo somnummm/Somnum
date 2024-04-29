@@ -1,4 +1,4 @@
-import {fetchSleep} from "../store/program";
+import {loadSleepInfo} from "../store/program";
 import {useEffect, useState} from "react";
 import Loader from "../components/Loader";
 import ModalAddProgram from "../components/ModalAddProgram";
@@ -18,31 +18,8 @@ const Program = () => {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
-    const loadInfo = () => {
-        fetchSleep()
-            .then((response) => {
-                setSleep(response);
-                const selectedEntry = response.find(
-                    (entry) => new Date(entry.date).toLocaleDateString() === dateSelected
-                );
-                if (selectedEntry !== undefined) {
-                    const sleepTime = new Date(selectedEntry.sleepTime).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                    });
-                    setSleepTime(sleepTime);
-                    const wakeTime = new Date(selectedEntry.wakeTime).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                    });
-                    setWakeTime(wakeTime);
-                    setIsLoading(false);
-                }
-            });
-    };
-
     useEffect(() => {
-        loadInfo();
+        loadSleepInfo(dateSelected, setSleep, setSleepTime, setWakeTime, setIsLoading);
     }, [dateSelected]);
 
     return isLoading ? (

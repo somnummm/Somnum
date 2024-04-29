@@ -4,6 +4,7 @@ import fetchUserInfo from "../store/profile";
 import Loader from "../components/Loader";
 import { supabase } from "../supabaseClient.js";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../components/PageTitle.jsx";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -24,9 +25,7 @@ const Profile = () => {
   ) : (
     <>
       <div className="container">
-        <h1 className="titre">
-          Bienvenue {user.firstName} {user.lastName}
-        </h1>
+          <PageTitle title={`Bienvenue ${user.firstName} ${user.lastName}`} />
       </div>
       <div className="infos">
         <ul>

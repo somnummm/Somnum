@@ -3,6 +3,7 @@ import { fetchLastNight, fetchAdvice } from "../store/dashboard";
 import Loader from "../components/Loader";
 import DashboardInfo from "../components/DashboardInfo";
 import DashboardAdvice from "../components/DashboardAdvice";
+import PageTitle from "../components/PageTitle.jsx";
 const Dashboard = () => {
   const [lastNight, setlastNight] = useState(null);
   const [advice, setAdvice] = useState(null);
@@ -29,7 +30,7 @@ const Dashboard = () => {
     </div>
   ) : (
     <div className="pb-10">
-      <h2 className="text-2xl font-bold text-gray-50">Tableau de bord</h2>
+      <PageTitle title="Tableau de bord" />
       <DashboardInfo info={lastNight} />
       <DashboardAdvice advice={advice} className="mb-8" />
       {/* <div>

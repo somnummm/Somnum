@@ -27,6 +27,6 @@ export async function unAuthGuard(navigation) {
         navigate = useNavigate();
     }
     if (await isLogged()) {
-        navigate(('/dashboard'));
+        navigate(('/'));
     }
 }

@@ -52,7 +52,7 @@ const SignUp = () => {
                                     if (email && password && firstName && lastName && age && job) {
                                         e.preventDefault();
                                         register(email, password, firstName, lastName, age, job)
-                                            .then(r => navigate("/dashboard"));
+                                            .then(r => navigate("/"));
                                     } else {
                                         return false;
                                     }

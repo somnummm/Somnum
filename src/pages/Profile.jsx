@@ -4,6 +4,9 @@ import "../App.css"
 import fetchUserInfo from "../store/profile";
 import Loader from "../components/Loader";
 import Citation from "../components/citation";
+import { supabase } from "../supabaseClient.js";
+import { useNavigate } from "react-router-dom";
+import PageTitle from "../components/PageTitle.jsx";
 
 const Profile = () => {
   const userId = 3;  
@@ -26,9 +29,7 @@ const Profile = () => {
   ) : (
     <>
       <div className="container">
-        <h1 className=" shadow-2xl rounded-lg text-center text-2.5xl leading-relaxed overflow-wrap-break m-2">
-          Bienvenue {user.firstName} {user.lastName}
-        </h1>
+          <PageTitle title={`Bienvenue ${user.firstName} ${user.lastName}`} />
       </div>
       <div className="infos">
         <ul>

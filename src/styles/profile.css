@@ -38,7 +38,6 @@
 }
 .pageInfosParagraphe {
   position: relative;
-  display: flex;
   text-align: center;
   overflow-wrap: break-word;
   font-size: 1em;

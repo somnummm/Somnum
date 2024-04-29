@@ -11,14 +11,17 @@ import {loadSleepInfo} from "../store/program.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
-    const [sleep, setSleep] = useState([]);
     const [sleepTime, setSleepTime] = useState("");
     const [wakeTime, setWakeTime] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     let navigate = useNavigate();
 
     useEffect(() => {
-        loadSleepInfo(new Date().toLocaleDateString(), setSleep, setSleepTime, setWakeTime, setIsLoading);
+        loadSleepInfo(new Date().toLocaleDateString()).then((response) => {
+            setSleepTime(response.sleepTime);
+            setWakeTime(response.wakeTime);
+            setIsLoading(response.isLoading);
+        });
         fetchUserInfo().then((response) => {
             setUser(response);
             setIsLoading(false);

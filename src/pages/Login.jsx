@@ -1,26 +1,25 @@
 import { auth } from "../store/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthInput from "../components/AuthInput.jsx";
+import { unAuthGuard } from "../guards/authGuard.js";
+import MoonIcon from "../assets/icons/moon.jsx";
 
 const Login = () => {
+  let navigate = useNavigate();
+  useEffect(() => {
+    unAuthGuard(navigate);
+  }, [navigate]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  async function login() {
-    const response = await auth(email, password);
-    if (response.token) {
-      navigate("/dashboard");
-    }
-  }
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-          className="mx-auto h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Your Company"
-        />
+        <div className="flex justify-center">
+          <MoonIcon className="mx-auto h-20 w-auto" />
+        </div>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-50">
           Se connecter
         </h2>
@@ -28,79 +27,39 @@ const Login = () => {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-50"
-            >
-              Adresse mail
-            </label>
-            <div className="mt-2">
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-50 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-50"
-              >
-                Mot de passe
-              </label>
-              <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Mot de passe oublié ?
-                </a>
-              </div>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={(e) => {
-                e.preventDefault(email, password);
-                login();
-              }}
-            >
-              Se connecter
-            </button>
-          </div>
+          <AuthInput
+            fieldSetter={setEmail}
+            type={"email"}
+            labelName={"Adresse mail"}
+            id={"email"}
+          />
+          <AuthInput
+            fieldSetter={setPassword}
+            type={"password"}
+            labelName={"Mot de passe"}
+            id={"email"}
+            // xp
+            additionalBlockLink={"#"}
+          />
+          <button
+            type="submit"
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={(e) => {
+              e.preventDefault();
+              auth(email, password).then(() => navigate("/"));
+            }}
+          >
+            Se connecter
+          </button>
         </form>
 
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?{" "}
+        <p className="mt-5 text-center text-sm text-gray-50">
+          Pas encore membre?{" "}
           <a
-            href="#"
+            href="/register"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a 14 day free trial
+            Inscris-toi!
           </a>
         </p>
       </div>

@@ -1,26 +1,36 @@
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./layout/Navbar";
 import Profile from "./pages/Profile";
-import Login from "./pages/Login";
-import Sleep from "./pages/Sleep";
+import Program from "./pages/Program";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import Night from "./pages/Night";
-import "./Profile.css";
 import "./App.css";
-import {authGuard} from "./guards/authGuard.js";
+import "./styles/background.css";
+import { unAuthGuard } from "./guards/authGuard.js";
 
 function App() {
-    return (
+  return (
+    <div className="space">
+      <div className="particle"></div>
+      <div className="particle"></div>
+      <div className="particle"></div>
+      <div className="particle"></div>
+      <div className="front">
         <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/" element={<Navbar/>}>
-                <Route path="dashboard" element={<Dashboard/>}/>
-                <Route path="sleep" element={<Sleep/>}/>
-                <Route path="night" element={<Night/>}/>
-                <Route path="profile" element={<Profile/>}/>
-            </Route>
+          <Route path="/login" element={<Login />} onEnter={unAuthGuard} />
+          <Route path="/register" element={<SignUp />} onEnter={unAuthGuard} />
+          <Route path="/" element={<Navbar />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="program" element={<Program />} />
+            <Route path="night" element={<Night />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
         </Routes>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default App;

@@ -1,24 +1,21 @@
 #root {
-  margin: 0 auto;
-} 
+    margin: 0 auto;
+}
+
 .container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .infos {
-  display: flex;
-  position: relative;
-  justify-content: flex-end;
-  line-height: 1.5;
-  font-size: 1.2em;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-right: 10px;
-  margin-right: 10px;
+    display: flex;
+    position: relative;
+    line-height: 1.5;
+    font-size: 1.2em;
+    padding-top: 5px;
 }
 
-.contactTitle, .programChosen{
+.contactTitle, .programChosen {
     font-size: 1.1em;
     font-weight: bold;
     padding-top: 5px;
@@ -27,25 +24,28 @@
     position: relative;
     padding-left: 5px;
 }
-.mail{
+
+.mail {
     font-size: 1em;
     padding-left: 4px;
 }
 
 .blocInfos {
-  display: flex;
-  justify-content: left;
+    display: flex;
+    justify-content: left;
 }
+
 .pageInfosParagraphe {
-  position: relative;
-  text-align: center;
-  overflow-wrap: break-word;
-  font-size: 1em;
-  padding-left: 10px;
-  padding-right: 10px;
+    position: relative;
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
 h2 {
-  font-weight: normal;
-  line-height: 1.5em;
+    font-weight: normal;
+    line-height: 1.5em;
 }
 

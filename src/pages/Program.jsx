@@ -109,7 +109,7 @@ const Program = () => {
                                     setWakeTime={setWakeTime}
                                     date={dateSelected}
                                     entity={selectedEntry}
-                                    reload={loadInfo}
+                                    reload={loadSleepInfo}
                                 />
                             )}
                         </div>
@@ -120,7 +120,7 @@ const Program = () => {
                             <ModalAddProgram
                                 setIsCreateModalOpen={setIsCreateModalOpen}
                                 date={dateSelected}
-                                reload={loadInfo}
+                                reload={loadSleepInfo}
                             />
                         )}
 

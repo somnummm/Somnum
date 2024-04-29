@@ -20,7 +20,6 @@ const Program = () => {
 
     const fetchData = async (dateSelected) => {
         const data = await loadSleepInfo(dateSelected);
-        console.log(data);
         setSleep(data.sleep);
         setSleepTime(data.sleepTime);
         setWakeTime(data.wakeTime);

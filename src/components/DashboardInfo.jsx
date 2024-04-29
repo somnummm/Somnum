@@ -6,7 +6,7 @@ const DashboardInfo = ({info}) => {
                     <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         Heure de coucher
                     </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p className="font-normal text-white dark:text-white">
                         {info[0]?.sleep_time ? info[0].sleep_time : "Pas de données"}
                     </p>
                 </div>
@@ -15,7 +15,7 @@ const DashboardInfo = ({info}) => {
                     <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         Heure de réveil
                     </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p className="font-normal text-gray-700 dark:text-white">
                         {info[0]?.wake_time ? info[0].wake_time : "Pas de données"}
                     </p>
                 </div>
@@ -24,7 +24,7 @@ const DashboardInfo = ({info}) => {
                     <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         Durée du sommeil
                     </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p className="font-normal text-gray-700 dark:text-white">
                         {info[0]?.sleep_duration ? info[0].sleep_duration : "Pas de données"}
                     </p>
                 </div>
@@ -32,7 +32,7 @@ const DashboardInfo = ({info}) => {
                     <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
                         valeur 1
                     </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p className="font-normal text-gray-700 dark:text-white">
                         valeur 2
                     </p>
                 </div>

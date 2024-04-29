@@ -7,7 +7,7 @@ import Citation from "../components/citation";
 import PageTitle from "../components/PageTitle.jsx";
 import {useNavigate} from "react-router-dom";
 import {supabase} from "../supabaseClient.js";
-import {fetchSleep, loadSleepInfo} from "../store/program.js";
+import {loadSleepInfo} from "../store/program.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);

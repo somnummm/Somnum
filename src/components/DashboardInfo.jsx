@@ -1,4 +1,4 @@
-const DashboardInfo = ({info}) => {
+const DashboardInfo = ({lastNightInfo, nextNightInfo}) => {
     return (
         <div className="flex flex-col items-center m-4">
             <div className="grid grid-cols-2 gap-4">
@@ -7,7 +7,7 @@ const DashboardInfo = ({info}) => {
                         Heure de coucher
                     </h5>
                     <p className="font-normal text-white dark:text-white">
-                        {info[0]?.sleep_time ? info[0].sleep_time : "Pas de données"}
+                        {lastNightInfo[0]?.sleep_time ? lastNightInfo[0].sleep_time : "Pas de données"}
                     </p>
                 </div>
 
@@ -16,7 +16,7 @@ const DashboardInfo = ({info}) => {
                         Heure de réveil
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-white">
-                        {info[0]?.wake_time ? info[0].wake_time : "Pas de données"}
+                        {lastNightInfo[0]?.wake_time ? lastNightInfo[0].wake_time : "Pas de données"}
                     </p>
                 </div>
 
@@ -25,15 +25,15 @@ const DashboardInfo = ({info}) => {
                         Durée du sommeil
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-white">
-                        {info[0]?.sleep_duration ? info[0].sleep_duration : "Pas de données"}
+                        {lastNightInfo[0]?.sleep_duration ? lastNightInfo[0].sleep_duration : "Pas de données"}
                     </p>
                 </div>
                 <div className="block  p-6 rounded-lg shadow bg-amber-400">
                     <h5 className="mb-2 text-xl font-bold tracking-tight text-white ">
-                        valeur 1
+                        Nuit à suivre
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-white">
-                        valeur 2
+                        {nextNightInfo?.sleepTime && nextNightInfo?.wakeTime ? `${nextNightInfo.sleepTime} -> ${nextNightInfo.wakeTime}` : "Pas de données"}
                     </p>
                 </div>
             </div>

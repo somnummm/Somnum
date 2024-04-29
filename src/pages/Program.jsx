@@ -18,8 +18,17 @@ const Program = () => {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
+    const fetchData = async (dateSelected) => {
+        const data = await loadSleepInfo(dateSelected);
+        console.log(data);
+        setSleep(data.sleep);
+        setSleepTime(data.sleepTime);
+        setWakeTime(data.wakeTime);
+        setIsLoading(data.isLoading);
+    };
+
     useEffect(() => {
-        loadSleepInfo(dateSelected, setSleep, setSleepTime, setWakeTime, setIsLoading);
+        fetchData(dateSelected);
     }, [dateSelected]);
 
     return isLoading ? (

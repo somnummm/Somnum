@@ -14,27 +14,27 @@ const fetchSleep = async () => {
     return SleepProgram;
 };
 
-export const loadSleepInfo = (dateSelected, setSleep, setSleepTime, setWakeTime, setIsLoading) => {
-    fetchSleep()
-        .then((response) => {
-            setSleep(response);
-            const selectedEntry = response.find(
-                (entry) => new Date(entry.date).toLocaleDateString() === dateSelected
-            );
-            if (selectedEntry !== undefined) {
-                const sleepTime = new Date(selectedEntry.sleepTime).toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                });
-                setSleepTime(sleepTime);
-                const wakeTime = new Date(selectedEntry.wakeTime).toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                });
-                setWakeTime(wakeTime);
-                setIsLoading(false);
-            }
-        });
+export const loadSleepInfo = async (dateSelected) => {
+    try {
+        const response = await fetchSleep();
+        const selectedEntry = response.find(
+            (entry) => new Date(entry.date).toLocaleDateString() === dateSelected
+        );
+        if (selectedEntry !== undefined) {
+            const sleepTime = new Date(selectedEntry.sleepTime).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+            const wakeTime = new Date(selectedEntry.wakeTime).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+            return { sleep: response, sleepTime, wakeTime, isLoading: false };
+        }
+    } catch (error) {
+        console.error("Error fetching sleep data:", error);
+    }
+    return { sleep: [], sleepTime: "", wakeTime: "", isLoading: false };
 };
 
 const insertSleepProgram = async (date, sleepTime, wakeTime) => {

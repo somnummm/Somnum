@@ -1,11 +1,12 @@
-function MoonIcon() {
+import PropTypes from "prop-types";
+function MoonIcon({ color = "gray-50" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
       viewBox="0 0 24 24"
-      className="w-7 h-7 mb-2 text-gray-50"
+      className={`w-7 h-7 mb-2 text-${color}`}
     >
       <path
         fill="currentColor"
@@ -14,5 +15,9 @@ function MoonIcon() {
     </svg>
   );
 }
+
+MoonIcon.propTypes = {
+  color: PropTypes.string,
+};
 
 export default MoonIcon;

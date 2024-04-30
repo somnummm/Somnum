@@ -54,6 +54,10 @@ const Profile = () => {
           Se déconnecter
         </button>
       </div>
+      <h1>
+        Définir un nombre d'heure que l'on veut atteindre par nuit pour pouvoir
+        utiliser cette valeur pour des comparaisons
+      </h1>
       {/* <h1 className="programChosen">Vous avez choisi le programme suivant :</h1>
       <div className="blocInfos">
         <h2 className="pageInfosParagraphe">

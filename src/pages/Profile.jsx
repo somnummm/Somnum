@@ -27,7 +27,6 @@ const Profile = () => {
             setIsLoading(false);
         });
     }, []);
-
     return isLoading ? (
         <div className="flex items-center justify-center min-h-screen">
             <Loader/>

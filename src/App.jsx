@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Night from "./pages/Night";
+import Historic from "./pages/Historic.jsx";
 import "./App.css";
 import "./styles/background.css";
 import { unAuthGuard } from "./guards/authGuard.js";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/register" element={<SignUp />} onEnter={unAuthGuard} />
           <Route path="/" element={<Navbar />}>
             <Route path="" element={<Dashboard />} />
+            <Route path="historic" element={<Historic />} />
             <Route path="program" element={<Program />} />
             <Route path="night" element={<Night />} />
             <Route path="profile" element={<Profile />} />

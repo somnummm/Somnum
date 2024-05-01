@@ -37,7 +37,6 @@ const Program = () => {
   ) : (
     <div>
       <PageTitle title="Programme" />
-
       <div className="grid grid-cols-7 gap-2 my-4">
         {[...Array(7)].map((_, index) => {
           const date = new Date();
@@ -121,8 +120,6 @@ const Program = () => {
           <div className="flex flex-col justify-center">
             {isCreateModalOpen && (
               <ModalAddProgram
-                setSleepTime={setSleepTime}
-                setWakeTime={setWakeTime}
                 setIsCreateModalOpen={setIsCreateModalOpen}
                 date={dateSelected}
                 reload={loadSleepInfo}

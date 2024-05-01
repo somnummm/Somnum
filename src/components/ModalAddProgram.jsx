@@ -2,11 +2,10 @@ import { useState } from "react";
 import { insertSleepProgram } from "../store/program";
 import PropTypes from "prop-types";
 
-const ModalAddProgram = ({ setIsCreateModalOpen, date, reload }) => {
+const ModalAddProgram = ({ setIsCreateModalOpen, date }) => {
   ModalAddProgram.propTypes = {
     setIsCreateModalOpen: PropTypes.func.isRequired,
     date: PropTypes.string.isRequired,
-    reload: PropTypes.func.isRequired,
   };
   const [sleepTime, setSleepTime] = useState("");
   const [wakeTime, setWakeTime] = useState("");
@@ -85,13 +84,11 @@ const ModalAddProgram = ({ setIsCreateModalOpen, date, reload }) => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <button
-                  type="submit"
+                <div
                   className="text-white inline-flex items-center bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={() => {
-                    insertSleepProgram(date, sleepTime, wakeTime);
-                    setIsCreateModalOpen(false);
-                    reload();
+                  onClick={async () => {
+                    await insertSleepProgram(date, sleepTime, wakeTime);
+                    window.location.reload(); //manière de bourrin mais j'ai pas trouvé mieux ...
                   }}
                 >
                   <svg
@@ -107,7 +104,7 @@ const ModalAddProgram = ({ setIsCreateModalOpen, date, reload }) => {
                     ></path>
                   </svg>
                   Ajouter
-                </button>
+                </div>
               </div>
             </form>
           </div>

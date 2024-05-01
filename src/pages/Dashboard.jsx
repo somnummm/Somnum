@@ -55,6 +55,9 @@ const Dashboard = () => {
           Historique
         </button>
       </div>
+      <h2 className="text-xl font-bold text-gray-50 ml-4">
+        Votre dernière nuit
+      </h2>
       <DashboardInfo lastNightInfo={lastNight} nextNightInfo={nextNight} />
       <DashboardAdvice advice={advice} className="mb-8" />
     </div>

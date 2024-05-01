@@ -36,6 +36,7 @@ function App() {
                         <Route path="night" element={<Night/>}/>
                         <Route path="profile" element={<Profile/>}/>
                     </Route>
+                    <Route path="*" element={<Navigate to="/"/>}/>
                 </Routes>
             </div>
         </div>

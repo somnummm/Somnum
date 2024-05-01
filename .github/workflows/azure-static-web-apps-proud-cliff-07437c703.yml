@@ -33,7 +33,7 @@ jobs:
           output_location: "dist" # Built app content directory - optional
           app_build_command: 'npm run build'
         env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_API_URL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           ###### End of Repository/Build Configurations ######
 

@@ -21,9 +21,9 @@ export default function Navbar() {
             <nav>
                 <div className="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
                     <NavItem to="/" icon={<MoonIcon/>}/>
-                    <NavItem to="/program" icon={<CalendarIcon/>}/>
-                    <NavItem to="/night" icon={<NightIcon/>}/>
-                    <NavItem to="/profile" icon={<ProfileIcon/>}/>
+                    <NavItem to="/app/program" icon={<CalendarIcon/>}/>
+                    <NavItem to="/app/night" icon={<NightIcon/>}/>
+                    <NavItem to="/app/profile" icon={<ProfileIcon/>}/>
                 </div>
             </nav>
         </div>

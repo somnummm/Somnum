@@ -1,0 +1,6 @@
+.selected-card {
+  background-color: #543fa6;
+
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}

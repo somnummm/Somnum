@@ -23,7 +23,7 @@ const Program = () => {
     setSleep(data.sleep);
     setSleepTime(data.sleepTime);
     setWakeTime(data.wakeTime);
-    setIsLoading(data.isLoading);
+    setIsLoading(false);
   };
 
   useEffect(() => {

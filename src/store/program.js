@@ -32,7 +32,7 @@ export const loadSleepInfo = async (dateSelected) => {
         hour: "2-digit",
         minute: "2-digit",
       });
-      return { sleep: response, sleepTime, wakeTime, isLoading: false };
+      return { sleep: response, sleepTime, wakeTime };
     }
   } catch (error) {
     console.error("Error fetching sleep data:", error);

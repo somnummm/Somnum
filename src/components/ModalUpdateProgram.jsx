@@ -12,17 +12,6 @@ const ModalUpdateProgram = ({
   const [newSleepTime, setNewSleepTime] = useState("");
   const [newWakeTime, setNewWakeTime] = useState("");
 
-  ModalUpdateProgram.propTypes = {
-    setSleepTime: PropTypes.func.isRequired,
-    setWakeTime: PropTypes.func.isRequired,
-    setIsUpdateModalOpen: PropTypes.func.isRequired,
-    date: PropTypes.string.isRequired,
-    entity: PropTypes.shape({
-      sleepTime: PropTypes.string.isRequired,
-      wakeTime: PropTypes.string.isRequired,
-    }).isRequired,
-  };
-
   useEffect(() => {
     console.log(entity);
     setNewSleepTime(
@@ -149,6 +138,16 @@ const ModalUpdateProgram = ({
       </div>
     </div>
   );
+};
+ModalUpdateProgram.propTypes = {
+  setSleepTime: PropTypes.func.isRequired,
+  setWakeTime: PropTypes.func.isRequired,
+  setIsUpdateModalOpen: PropTypes.func.isRequired,
+  date: PropTypes.string.isRequired,
+  entity: PropTypes.shape({
+    sleepTime: PropTypes.string.isRequired,
+    wakeTime: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ModalUpdateProgram;

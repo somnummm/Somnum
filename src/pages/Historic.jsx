@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchHistoric } from "../store/historic";
 import Loader from "../components/Loader";
 import NightCard from "../components/NightCard";
+import PageTitle from "../components/PageTitle";
 
 const Historic = () => {
   const [historic, setHistoric] = useState(null);
@@ -25,9 +26,7 @@ const Historic = () => {
   ) : (
     <div>
       <div>
-        <h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">
-          Historique
-        </h2>
+        <PageTitle title="Historique" />
       </div>
       <div className="w-full max-w-md p-4 sm:p-8 ">
         <div className="flow-root">

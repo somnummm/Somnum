@@ -11,19 +11,19 @@ const NightCard = ({ night }) => {
   if (wakeTime.isBefore(sleepTime)) {
     wakeTime.add(1, "days");
   }
-
+  
   // Calculer la durée en minutes
   let duration = wakeTime.diff(sleepTime, "minutes");
-
+  let goal = 7*60;
   // Convertir la durée en heures et minutes
   let hours = Math.floor(duration / 60);
   let minutes = duration % 60;
-
+  
   return (
-    <li className="pt-3 pb-0 sm:pt-4 bg-white border border-gray-200 rounded-lg shadow my-2">
+    <li className="pt-3 pb-0 sm:pt-4 bg-white border border-gray-200 rounded-lg shadow my-2  pr-4 pl-2 pb-2">
       <div className="flex items-center ">
         <div className="flex-shrink-0">
-          <MoonIcon color="teal-600" />
+        {(duration >= goal) ? (<MoonIcon color="gray-500"/>):( <MoonIcon color="red-500" />)}    
         </div>
         <div className="flex-1 min-w-0 ms-4">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">

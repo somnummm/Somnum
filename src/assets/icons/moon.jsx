@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-function MoonIcon({ color = "gray-50" }) {
+function MoonIcon({ color }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

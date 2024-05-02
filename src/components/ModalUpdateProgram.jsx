@@ -13,7 +13,6 @@ const ModalUpdateProgram = ({
   const [newWakeTime, setNewWakeTime] = useState("");
 
   useEffect(() => {
-    console.log(entity);
     setNewSleepTime(
       new Date(entity.sleepTime).toLocaleTimeString([], {
         hour: "2-digit",
@@ -63,7 +62,6 @@ const ModalUpdateProgram = ({
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <p className="text-gray-900">{JSON.stringify(newSleepTime)}</p>
 
           <form className="p-4 md:p-5">
             <div className="grid gap-4 mb-4 grid-cols-2">

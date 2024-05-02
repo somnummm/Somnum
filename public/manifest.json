@@ -1,0 +1,9 @@
+{
+  "name": "Somnum",
+  "short_name": "Somnum",
+  "description": "A simple bot that can play music and moderate your server.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

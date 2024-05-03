@@ -15,6 +15,7 @@ const SignUp = () => {
         const [lastName, setLastName] = useState("");
         const [age, setAge] = useState("");
         const [job, setJob] = useState("");
+        const [error, setError] = useState(null);
 
         return (
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -49,13 +50,10 @@ const SignUp = () => {
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={(e) => {
-                                    if (email && password && firstName && lastName && age && job) {
-                                        e.preventDefault();
-                                        register(email, password, firstName, lastName, age, job)
-                                            .then(r => navigate("/"));
-                                    } else {
-                                        return false;
-                                    }
+                                    e.preventDefault();
+                                    register(email, password, firstName, lastName, age, job)
+                                        .then(() => navigate("/"))
+                                        .catch(r => setError(r.message));
                                 }}
                             >
                                 S'inscrire
@@ -70,6 +68,7 @@ const SignUp = () => {
                                 </a>
                             </p>
                         </div>
+                        {error && <p className="text-red-500 text-center">{error}</p>}
                     </form>
                 </div>
             </div>

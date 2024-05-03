@@ -1,8 +1,43 @@
-# React + Vite
+# 💤 Somnum - Reprenez le controle sur votre sommeil 🛏️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Clément Gambier | Liès Tiguercha | Theo Perus
 
-Currently, two official plugins are available:
+Realisé dans le cadre de notre cours de web à l'ISEN Lille.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+## 📖 Description
+
+Somnum est une application de sommeil construite avec React, Tailwind, Jotai et Supabase, et build avec Vite. Elle permet de suivre vos habitudes de sommeil et de vous aider à améliorer votre sommeil.
+
+## 🛠️ Technologies utilisées
+
+- React
+- Tailwind
+- Jotai
+- Supabase
+- Vite
+
+## 📸 Captures d'écran
+
+### Page de login
+
+![Page Login](./doc/login.png)
+
+### Tableau de bord
+
+![Page Dashboard](./doc/dashboard.png)
+
+### Page de programme
+
+![Page Program](./doc/program.png)
+
+### Page de nuit
+
+![Page Night](./doc/night.png)
+
+### Page de profil
+
+![Page Profil](./doc/profile.png)

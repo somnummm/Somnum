@@ -4,6 +4,9 @@ Clément Gambier | Liès Tiguercha | Theo Perus
 
 Realisé dans le cadre de notre cours de web à l'ISEN Lille.
 
+
+[Url de déploiement](https://icy-plant-0cc512103.5.azurestaticapps.net/)
+
 ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -19,6 +22,7 @@ Somnum est une application de sommeil construite avec React, Tailwind, Jotai et 
 - Jotai
 - Supabase
 - Vite
+- Azure
 
 ## 📸 Captures d'écran
 
